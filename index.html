@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -34,6 +35,7 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
+        <script src="js/leaflet-search.js"></script>
         <script src="data/Commune_1.js"></script>
         <script src="data/Communecouverteaidealimentaire_2.js"></script>
         <script src="data/TauxdepauvretEPCI2020_3.js"></script>
@@ -50,7 +52,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[45.987164823534314,-1.1130474932412358],[47.072867022283276,0.6790540687737041]]);
+        }).fitBounds([[46.137949413420706,-0.9654872254795945],[46.99804847790964,0.5004141615934565]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -299,9 +301,6 @@
             var popupContent = '<table>\
                     <tr>\
                         <td class="visible-with-data" id="NOM" colspan="2"><strong>EPCI</strong><br />' + (feature.properties['NOM'] !== null ? autolinker.link(String(feature.properties['NOM']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Taux de pauvreté EPCI (2020).xlsx - Data_Taux de pauvreté (seuil à 60% du revenu médian) 2020" colspan="2"><strong>Taux de pauvreté en % (2020)</strong><br />' + (feature.properties['Taux de pauvreté EPCI (2020).xlsx - Data_Taux de pauvreté (seuil à 60% du revenu médian) 2020'] !== null ? autolinker.link(String(feature.properties['Taux de pauvreté EPCI (2020).xlsx - Data_Taux de pauvreté (seuil à 60% du revenu médian) 2020']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -911,6 +910,13 @@
             }  
         });       
         setBounds();
+        map.addControl(new L.Control.Search({
+            layer: layer_Commune_1,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'NOM'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
         resetLabels([layer_Dpartement_5,layer_BanqueAlimentairedesDeuxSvres_13]);
         map.on("zoomend", function(){
             resetLabels([layer_Dpartement_5,layer_BanqueAlimentairedesDeuxSvres_13]);
