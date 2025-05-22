@@ -52,7 +52,7 @@
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[46.137949413420706,-0.9654872254795945],[46.99804847790964,0.5004141615934565]]);
+        }).fitBounds([[46.0968311147066,-1.1610774314876389],[47.07630719480016,0.5427449685123543]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -487,13 +487,19 @@
         function pop_AssospartenairesBA79_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="ASSOCIATIONS" colspan="2"><strong>ASSOCIATIONS</strong><br />' + (feature.properties['ASSOCIATIONS'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIONS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['CODES'] !== null ? autolinker.link(String(feature.properties['CODES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="ADRESSES" colspan="2"><strong>ADRESSES</strong><br />' + (feature.properties['ADRESSES'] !== null ? autolinker.link(String(feature.properties['ADRESSES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ASSOCIATIO'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIO']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="COMMUNES" colspan="2"><strong>COMMUNES</strong><br />' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ADRESSES'] !== null ? autolinker.link(String(feature.properties['ADRESSES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Full Addre'] !== null ? autolinker.link(String(feature.properties['Full Addre']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
