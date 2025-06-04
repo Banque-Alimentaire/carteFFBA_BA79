@@ -45,14 +45,14 @@
         <script src="data/SecoursPopulaire_7.js"></script>
         <script src="data/AssospartenairesBA79_8.js"></script>
         <script src="data/Assosindpendantespartenaires_9.js"></script>
-        <script src="data/AssospartenairesSecoursCatholique_10.js"></script>
-        <script src="data/AssospartenairesCCAS_11.js"></script>
-        <script src="data/AssospartenairesCroixRouge_12.js"></script>
+        <script src="data/AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10.js"></script>
+        <script src="data/AssospartenairesCCASassos_partenaires_ba79__11.js"></script>
+        <script src="data/AssospartenairesCroixRougeassos_partenaires_ba79__12.js"></script>
         <script src="data/BanqueAlimentairedesDeuxSvres_13.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[46.0968311147066,-1.1610774314876389],[47.07630719480016,0.5427449685123543]]);
+        }).fitBounds([[46.30525904074524,-1.4068857461117468],[47.341064434414655,1.1613420730809847]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -106,7 +106,7 @@
         function pop_Commune_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="NOM" colspan="2"><strong>Commune</strong><br />' + (feature.properties['NOM'] !== null ? autolinker.link(String(feature.properties['NOM']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2"><strong>Commune</strong><br />' + (feature.properties['NOM'] !== null ? autolinker.link(String(feature.properties['NOM']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="POPULATION" colspan="2"><strong>Population</strong><br />' + (feature.properties['POPULATION'] !== null ? autolinker.link(String(feature.properties['POPULATION']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -408,7 +408,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/79RestoduCoeur_6.svg',
-            iconSize: [15.2, 15.2]
+            iconSize: [26.599999999999998, 26.599999999999998]
         }),
                 interactive: true,
             }
@@ -459,7 +459,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/SecoursPopulaire_7.svg',
-            iconSize: [19.0, 19.0]
+            iconSize: [25.84, 25.84]
         }),
                 interactive: true,
             }
@@ -490,16 +490,19 @@
                         <td colspan="2">' + (feature.properties['CODES'] !== null ? autolinker.link(String(feature.properties['CODES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['ASSOCIATIO'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIO']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="ASSOCIATIONS" colspan="2"><strong>ASSOCIATIONS</strong><br />' + (feature.properties['ASSOCIATIONS'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIONS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['ADRESSES'] !== null ? autolinker.link(String(feature.properties['ADRESSES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="ADRESSES" colspan="2"><strong>ADRESSES</strong><br />' + (feature.properties['ADRESSES'] !== null ? autolinker.link(String(feature.properties['ADRESSES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="COMMUNES" colspan="2"><strong>COMMUNES</strong><br />' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Full Addre'] !== null ? autolinker.link(String(feature.properties['Full Addre']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Volumes distribués" colspan="2"><strong>Volume distribué</strong><br />' + (feature.properties['Volumes distribués'] !== null ? autolinker.link(String(feature.properties['Volumes distribués']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nombre de bénéficiaires" colspan="2"><strong>Nombre de bénéficiaires</strong><br />' + (feature.properties['Nombre de bénéficiaires'] !== null ? autolinker.link(String(feature.properties['Nombre de bénéficiaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -518,10 +521,10 @@
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 2.0,
+                weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(250,130,0,0.9882352941176471)',
+                fillColor: 'rgba(255,127,0,1.0)',
                 interactive: true,
             }
         }
@@ -544,6 +547,7 @@
             },
         });
         bounds_group.addLayer(layer_AssospartenairesBA79_8);
+        map.addLayer(layer_AssospartenairesBA79_8);
         function pop_Assosindpendantespartenaires_9(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -554,6 +558,12 @@
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="COMMUNES" colspan="2"><strong>Commune</strong><br />' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Volumes distribués" colspan="2"><strong>Volume distribué</strong><br />' + (feature.properties['Volumes distribués'] !== null ? autolinker.link(String(feature.properties['Volumes distribués']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nombre de bénéficiaires" colspan="2"><strong>Nombre de bénéficiaires</strong><br />' + (feature.properties['Nombre de bénéficiaires'] !== null ? autolinker.link(String(feature.properties['Nombre de bénéficiaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -599,16 +609,25 @@
         });
         bounds_group.addLayer(layer_Assosindpendantespartenaires_9);
         map.addLayer(layer_Assosindpendantespartenaires_9);
-        function pop_AssospartenairesSecoursCatholique_10(feature, layer) {
+        function pop_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="ASSOCIATIO" colspan="2"><strong>Association</strong><br />' + (feature.properties['ASSOCIATIO'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIO']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="ASSOCIATIONS" colspan="2"><strong>ASSOCIATIONS</strong><br />' + (feature.properties['ASSOCIATIONS'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIONS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="ADRESSES" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['ADRESSES'] !== null ? autolinker.link(String(feature.properties['ADRESSES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="COMMUNES" colspan="2"><strong>Commune</strong><br />' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Volumes distribués" colspan="2"><strong>Volume distribué</strong><br />' + (feature.properties['Volumes distribués'] !== null ? autolinker.link(String(feature.properties['Volumes distribués']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nombre de bénéficiaires" colspan="2"><strong>Nombre de bénéficiaires</strong><br />' + (feature.properties['Nombre de bénéficiaires'] !== null ? autolinker.link(String(feature.properties['Nombre de bénéficiaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -618,9 +637,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_AssospartenairesSecoursCatholique_10_0() {
+        function style_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10_0() {
             return {
-                pane: 'pane_AssospartenairesSecoursCatholique_10',
+                pane: 'pane_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10',
                 radius: 5.2,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -634,36 +653,45 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_AssospartenairesSecoursCatholique_10');
-        map.getPane('pane_AssospartenairesSecoursCatholique_10').style.zIndex = 410;
-        map.getPane('pane_AssospartenairesSecoursCatholique_10').style['mix-blend-mode'] = 'normal';
-        var layer_AssospartenairesSecoursCatholique_10 = new L.geoJson(json_AssospartenairesSecoursCatholique_10, {
+        map.createPane('pane_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10');
+        map.getPane('pane_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10').style.zIndex = 410;
+        map.getPane('pane_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10').style['mix-blend-mode'] = 'normal';
+        var layer_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10 = new L.geoJson(json_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_AssospartenairesSecoursCatholique_10',
-            layerName: 'layer_AssospartenairesSecoursCatholique_10',
-            pane: 'pane_AssospartenairesSecoursCatholique_10',
-            onEachFeature: pop_AssospartenairesSecoursCatholique_10,
+            dataVar: 'json_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10',
+            layerName: 'layer_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10',
+            pane: 'pane_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10',
+            onEachFeature: pop_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_AssospartenairesSecoursCatholique_10_0(feature));
+                return L.circleMarker(latlng, style_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10_0(feature));
             },
         });
-        bounds_group.addLayer(layer_AssospartenairesSecoursCatholique_10);
-        map.addLayer(layer_AssospartenairesSecoursCatholique_10);
-        function pop_AssospartenairesCCAS_11(feature, layer) {
+        bounds_group.addLayer(layer_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10);
+        map.addLayer(layer_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10);
+        function pop_AssospartenairesCCASassos_partenaires_ba79__11(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="ASSOCIATIO" colspan="2"><strong>Association</strong><br />' + (feature.properties['ASSOCIATIO'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIO']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="ASSOCIATIONS" colspan="2"><strong>ASSOCIATIONS</strong><br />' + (feature.properties['ASSOCIATIONS'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIONS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="ADRESSES" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['ADRESSES'] !== null ? autolinker.link(String(feature.properties['ADRESSES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="COMMUNES" colspan="2"><strong>Commune</strong><br />' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Volumes distribués" colspan="2"><strong>Volume distribué</strong><br />' + (feature.properties['Volumes distribués'] !== null ? autolinker.link(String(feature.properties['Volumes distribués']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nombre de bénéficiaires" colspan="2"><strong>Nombre de bénéficiaires</strong><br />' + (feature.properties['Nombre de bénéficiaires'] !== null ? autolinker.link(String(feature.properties['Nombre de bénéficiaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -673,9 +701,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_AssospartenairesCCAS_11_0() {
+        function style_AssospartenairesCCASassos_partenaires_ba79__11_0() {
             return {
-                pane: 'pane_AssospartenairesCCAS_11',
+                pane: 'pane_AssospartenairesCCASassos_partenaires_ba79__11',
                 radius: 5.2,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -689,36 +717,45 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_AssospartenairesCCAS_11');
-        map.getPane('pane_AssospartenairesCCAS_11').style.zIndex = 411;
-        map.getPane('pane_AssospartenairesCCAS_11').style['mix-blend-mode'] = 'normal';
-        var layer_AssospartenairesCCAS_11 = new L.geoJson(json_AssospartenairesCCAS_11, {
+        map.createPane('pane_AssospartenairesCCASassos_partenaires_ba79__11');
+        map.getPane('pane_AssospartenairesCCASassos_partenaires_ba79__11').style.zIndex = 411;
+        map.getPane('pane_AssospartenairesCCASassos_partenaires_ba79__11').style['mix-blend-mode'] = 'normal';
+        var layer_AssospartenairesCCASassos_partenaires_ba79__11 = new L.geoJson(json_AssospartenairesCCASassos_partenaires_ba79__11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_AssospartenairesCCAS_11',
-            layerName: 'layer_AssospartenairesCCAS_11',
-            pane: 'pane_AssospartenairesCCAS_11',
-            onEachFeature: pop_AssospartenairesCCAS_11,
+            dataVar: 'json_AssospartenairesCCASassos_partenaires_ba79__11',
+            layerName: 'layer_AssospartenairesCCASassos_partenaires_ba79__11',
+            pane: 'pane_AssospartenairesCCASassos_partenaires_ba79__11',
+            onEachFeature: pop_AssospartenairesCCASassos_partenaires_ba79__11,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_AssospartenairesCCAS_11_0(feature));
+                return L.circleMarker(latlng, style_AssospartenairesCCASassos_partenaires_ba79__11_0(feature));
             },
         });
-        bounds_group.addLayer(layer_AssospartenairesCCAS_11);
-        map.addLayer(layer_AssospartenairesCCAS_11);
-        function pop_AssospartenairesCroixRouge_12(feature, layer) {
+        bounds_group.addLayer(layer_AssospartenairesCCASassos_partenaires_ba79__11);
+        map.addLayer(layer_AssospartenairesCCASassos_partenaires_ba79__11);
+        function pop_AssospartenairesCroixRougeassos_partenaires_ba79__12(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="ASSOCIATIO" colspan="2"><strong>Association</strong><br />' + (feature.properties['ASSOCIATIO'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIO']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="ASSOCIATIONS" colspan="2"><strong>ASSOCIATIONS</strong><br />' + (feature.properties['ASSOCIATIONS'] !== null ? autolinker.link(String(feature.properties['ASSOCIATIONS']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="ADRESSES" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['ADRESSES'] !== null ? autolinker.link(String(feature.properties['ADRESSES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="COMMUNES" colspan="2"><strong>Commune</strong><br />' + (feature.properties['COMMUNES'] !== null ? autolinker.link(String(feature.properties['COMMUNES']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Volumes distribués" colspan="2"><strong>Volume distribué</strong><br />' + (feature.properties['Volumes distribués'] !== null ? autolinker.link(String(feature.properties['Volumes distribués']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nombre de bénéficiaires" colspan="2"><strong>Nombre de bénéficiaires</strong><br />' + (feature.properties['Nombre de bénéficiaires'] !== null ? autolinker.link(String(feature.properties['Nombre de bénéficiaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -728,9 +765,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_AssospartenairesCroixRouge_12_0() {
+        function style_AssospartenairesCroixRougeassos_partenaires_ba79__12_0() {
             return {
-                pane: 'pane_AssospartenairesCroixRouge_12',
+                pane: 'pane_AssospartenairesCroixRougeassos_partenaires_ba79__12',
                 radius: 5.2,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -744,26 +781,26 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_AssospartenairesCroixRouge_12');
-        map.getPane('pane_AssospartenairesCroixRouge_12').style.zIndex = 412;
-        map.getPane('pane_AssospartenairesCroixRouge_12').style['mix-blend-mode'] = 'normal';
-        var layer_AssospartenairesCroixRouge_12 = new L.geoJson(json_AssospartenairesCroixRouge_12, {
+        map.createPane('pane_AssospartenairesCroixRougeassos_partenaires_ba79__12');
+        map.getPane('pane_AssospartenairesCroixRougeassos_partenaires_ba79__12').style.zIndex = 412;
+        map.getPane('pane_AssospartenairesCroixRougeassos_partenaires_ba79__12').style['mix-blend-mode'] = 'normal';
+        var layer_AssospartenairesCroixRougeassos_partenaires_ba79__12 = new L.geoJson(json_AssospartenairesCroixRougeassos_partenaires_ba79__12, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_AssospartenairesCroixRouge_12',
-            layerName: 'layer_AssospartenairesCroixRouge_12',
-            pane: 'pane_AssospartenairesCroixRouge_12',
-            onEachFeature: pop_AssospartenairesCroixRouge_12,
+            dataVar: 'json_AssospartenairesCroixRougeassos_partenaires_ba79__12',
+            layerName: 'layer_AssospartenairesCroixRougeassos_partenaires_ba79__12',
+            pane: 'pane_AssospartenairesCroixRougeassos_partenaires_ba79__12',
+            onEachFeature: pop_AssospartenairesCroixRougeassos_partenaires_ba79__12,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_AssospartenairesCroixRouge_12_0(feature));
+                return L.circleMarker(latlng, style_AssospartenairesCroixRougeassos_partenaires_ba79__12_0(feature));
             },
         });
-        bounds_group.addLayer(layer_AssospartenairesCroixRouge_12);
-        map.addLayer(layer_AssospartenairesCroixRouge_12);
+        bounds_group.addLayer(layer_AssospartenairesCroixRougeassos_partenaires_ba79__12);
+        map.addLayer(layer_AssospartenairesCroixRougeassos_partenaires_ba79__12);
         function pop_BanqueAlimentairedesDeuxSvres_13(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -842,11 +879,11 @@
         map.addLayer(layer_BanqueAlimentairedesDeuxSvres_13);
         var overlaysTree = [
             {label: '<img src="legend/BanqueAlimentairedesDeuxSvres_13.png" /> Banque Alimentaire des Deux Sèvres', layer: layer_BanqueAlimentairedesDeuxSvres_13},
-            {label: '<img src="legend/AssospartenairesCroixRouge_12.png" /> Assos partenaires - Croix Rouge', layer: layer_AssospartenairesCroixRouge_12},
-            {label: '<img src="legend/AssospartenairesCCAS_11.png" /> Assos partenaires - CCAS', layer: layer_AssospartenairesCCAS_11},
-            {label: '<img src="legend/AssospartenairesSecoursCatholique_10.png" /> Assos partenaires - Secours Catholique', layer: layer_AssospartenairesSecoursCatholique_10},
+            {label: '<img src="legend/AssospartenairesCroixRougeassos_partenaires_ba79__12.png" /> Assos partenaires - Croix Rouge — assos_partenaires_ba79_', layer: layer_AssospartenairesCroixRougeassos_partenaires_ba79__12},
+            {label: '<img src="legend/AssospartenairesCCASassos_partenaires_ba79__11.png" /> Assos partenaires - CCAS — assos_partenaires_ba79_', layer: layer_AssospartenairesCCASassos_partenaires_ba79__11},
+            {label: '<img src="legend/AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10.png" /> Assos partenaires - Secours Catholique — assos_partenaires_ba79_', layer: layer_AssospartenairesSecoursCatholiqueassos_partenaires_ba79__10},
             {label: '<img src="legend/Assosindpendantespartenaires_9.png" /> Assos indépendantes partenaires', layer: layer_Assosindpendantespartenaires_9},
-            {label: '<img src="legend/AssospartenairesBA79_8.png" /> Assos partenaires BA79', layer: layer_AssospartenairesBA79_8},
+            {label: '<img src="legend/AssospartenairesBA79_8.png" /> Assos partenaires BA79 ', layer: layer_AssospartenairesBA79_8},
             {label: '<img src="legend/SecoursPopulaire_7.png" /> Secours Populaire', layer: layer_SecoursPopulaire_7},
             {label: '<img src="legend/79RestoduCoeur_6.png" /> 79 - Resto du Coeur', layer: layer_79RestoduCoeur_6},
             {label: '<img src="legend/Dpartement_5.png" /> Département', layer: layer_Dpartement_5},
